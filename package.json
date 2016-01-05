@@ -1,0 +1,13 @@
+{
+  "name": "buildkit-plugins",
+  "license": "GPL-3.0",
+  "description": "Buildkit plugin library",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/cgkineo/buildkit-taskrunner.git"
+  },
+  "version": "0.1.1",
+  "dependencies": {
+    "buildkit-globber": "^0.1.1"
+  }
+}
