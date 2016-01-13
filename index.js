@@ -5,11 +5,15 @@ var Tree = require("buildkit-globber").Tree;
 var fs = require("fs");
 var path = require("path");
 
-var plugins = {};
+var pluginsList = {};
 
 class Plugins {
 
-	static load(pluginPath, pluginConfigGlob, each) {
+	constructor() {
+		this.list = pluginsList
+	}
+
+	load(pluginPath, pluginConfigGlob, each) {
 
 		var globs = new GlobCollection([pluginConfigGlob]);
 		var tree = new Tree(".", pluginPath);
@@ -20,14 +24,16 @@ class Plugins {
 			var pluginPathObject = pluginPathObjects[i];
 			var pluginJSON = JSON.parse(fs.readFileSync(pluginPathObject.location));
 			var indexPath = path.posix.join(pluginPathObject.dirname, pluginJSON.pluginMain);
-			plugins[pluginJSON.pluginName] = require( indexPath );
-			if (each) each(plugins[pluginJSON.pluginName], plugins);
+			var pluginCode = require( indexPath );
+
+			if (each) {
+				pluginsList[pluginJSON.pluginName] = each(pluginCode, pluginJSON, pluginsList);
 		}
 
-		return plugins;
+		}
 		
 	}
 
 }
 
-module.exports = Plugins;
+module.exports = new Plugins();

@@ -11,7 +11,7 @@ npm install --save buildkit-plugins
 `
 2. Require
 `
-var Plugins = require("buildkit-plugins");
+var plugins = require("buildkit-plugins");
 `
 4. Create a plugin folder
 `
@@ -33,13 +33,13 @@ class Test {
 	
 }
 
-module.exports = new Test();
+module.exports = Test;
 ```
 
 ## Plugins
 ```
 
-Plugins.load("./plugins", "*/config.json", function(plugin, plugins) {
+plugins.load("./plugins", "*/config.json", function(pluginCode, pluginJSON, pluginList) {
 	
 	//do something with the returned plugins
 
