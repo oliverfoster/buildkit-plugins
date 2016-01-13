@@ -6,8 +6,8 @@
     "type": "git",
     "url": "git://github.com/cgkineo/buildkit-taskrunner.git"
   },
-  "version": "0.1.1",
+  "version": "0.1.2",
   "dependencies": {
-    "buildkit-globber": "^0.1.1"
+    "buildkit-globber": "^0.1.3"
   }
 }
