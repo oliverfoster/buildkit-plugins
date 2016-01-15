@@ -6,9 +6,9 @@
     "type": "git",
     "url": "git://github.com/cgkineo/buildkit-taskrunner.git"
   },
-  "version": "0.1.3",
+  "version": "0.1.4",
   "dependencies": {
-    "buildkit-globber": "^0.1.3"
+    "buildkit-globber": "^0.1.5"
   },
   "readme": "#buildkit-plugins\r\nBuildkit plugin loading library\r\n\r\n## What Does It Do?\r\nLoads a set of plugins in nodejs and provides a callback function for each plugin\r\n\r\n## Preparation\r\n1. Install buildkit-plugins\r\n`\r\nnpm install --save buildkit-plugins\r\n`\r\n2. Require\r\n`\r\nvar plugins = require(\"buildkit-plugins\");\r\n`\r\n4. Create a plugin folder\r\n`\r\n./plugins\r\n`\r\n5. Add a plugins with a config json and main js file\r\n```\r\n// ./plugins/test/config.json\r\n{\r\n\t\"pluginName\": \"test\"\r\n\t\"pluginMain\": \"js/index.js\"\r\n}\r\n```\r\n```\r\n// ./plugins/test/js/index.js\r\n'use strict';\r\n\r\nclass Test {\r\n\t\r\n}\r\n\r\nmodule.exports = Test;\r\n```\r\n\r\n## Plugins\r\n```\r\n\r\nplugins.load(\"./plugins\", \"*/config.json\", function(pluginCode, pluginJSON, pluginList) {\r\n\t\r\n\t//do something with the returned plugins\r\n\r\n});\r\n\r\n\r\n```\r\n",
   "readmeFilename": "README.md",
